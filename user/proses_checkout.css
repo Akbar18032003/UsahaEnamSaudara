@@ -1,0 +1,539 @@
+:root {
+      --primary-color: #2563eb;
+      --primary-hover: #1d4ed8;
+      --secondary-color: #10b981;
+      --accent-color: #f59e0b;
+      --success-color: #059669;
+      --danger-color: #dc2626;
+      --warning-color: #d97706;
+      
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-nav: rgba(255, 255, 255, 0.95);
+      --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+      --text-muted: #9ca3af;
+      --text-white: #ffffff;
+      
+      --border-color: #e5e7eb;
+      --border-hover: #d1d5db;
+      --border-focus: #3b82f6;
+      
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-fast: all 0.15s ease-in-out;
+    }
+
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-gradient);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+    }
+
+    .navbar {
+      background: var(--bg-nav);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-md);
+      transition: var(--transition-fast);
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-color);
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .nav-links a.active {
+      color: var(--primary-color);
+      background: rgba(37, 99, 235, 0.1);
+      font-weight: 600;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 50%;
+    }
+
+    .btn-logout {
+      margin-left: 1rem;
+    }
+
+    .btn-logout a {
+      background: linear-gradient(135deg, var(--danger-color), #ef4444);
+      color: var(--text-white);
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-weight: 500;
+      transition: var(--transition);
+      display: inline-block;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-logout a:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Main Content Area */
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-primary);
+      color: var(--text-white);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin: 0;
+    }
+
+    /* Checkout Box Styling */
+    .checkout-box {
+      max-width: 600px;
+      width: 100%;
+      background: var(--bg-card);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+      padding: 2.5rem;
+      margin: 0 auto;
+    }
+
+    .checkout-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    }
+
+    /* Page Title */
+    .checkout-box h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, var(--text-primary), var(--primary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .checkout-box h2::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: var(--radius-sm);
+    }
+
+    /* Product Info Section */
+    .produk-info {
+      background: var(--bg-secondary);
+      padding: 1.5rem;
+      border-radius: var(--radius-xl);
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .produk-info::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    }
+
+    .produk-info p {
+      font-size: 1.125rem;
+      margin: 0.75rem 0;
+      color: var(--text-secondary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .produk-info p strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Total Section */
+    .total {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 1.5rem;
+      border-radius: var(--radius-xl);
+      margin-bottom: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .total p {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin: 0;
+    }
+
+    .total strong {
+      font-size: 1.75rem;
+    }
+
+    /* Form Styling */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Label Styling */
+    label {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+
+    /* Select Styling */
+    select {
+      padding: 1rem 1.25rem;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      font-size: 1.125rem;
+      font-family: inherit;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      transition: var(--transition);
+      width: 100%;
+      max-width: 400px;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.75rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5rem 1.5rem;
+      padding-right: 3rem;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      transform: translateY(-2px);
+    }
+
+    select:hover {
+      border-color: var(--border-hover);
+    }
+
+    /* Button Styling */
+    button[type="submit"] {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+      color: var(--text-white);
+      border: none;
+      padding: 1.25rem 2rem;
+      border-radius: var(--radius-lg);
+      font-size: 1.125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 1rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    button[type="submit"]::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    button[type="submit"]:hover::before {
+      left: 100%;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    button[type="submit"]:active {
+      transform: translateY(-1px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .navbar {
+        padding: 1rem 1.5rem;
+      }
+      
+      .main-content {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .btn-logout {
+        margin-left: 0;
+      }
+      
+      .main-content {
+        padding: 1rem;
+      }
+      
+      .checkout-box {
+        padding: 2rem;
+      }
+      
+      .checkout-box h2 {
+        font-size: 1.875rem;
+      }
+      
+      .produk-info p {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+      
+      .total p {
+        font-size: 1.25rem;
+      }
+      
+      .total strong {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 0.75rem;
+      }
+      
+      .logo {
+        font-size: 1.25rem;
+      }
+      
+      .nav-links {
+        font-size: 0.9rem;
+      }
+      
+      .nav-links a {
+        padding: 0.4rem 0.8rem;
+      }
+      
+      .main-content {
+        padding: 0.5rem;
+      }
+      
+      .checkout-box {
+        padding: 1.5rem;
+      }
+      
+      .checkout-box h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .produk-info {
+        padding: 1rem;
+      }
+      
+      .produk-info p {
+        font-size: 1rem;
+      }
+      
+      .total {
+        padding: 1rem;
+      }
+      
+      .total p {
+        font-size: 1.125rem;
+      }
+      
+      .total strong {
+        font-size: 1.25rem;
+      }
+      
+      label {
+        font-size: 1rem;
+      }
+      
+      select {
+        padding: 0.875rem 1rem;
+        font-size: 1rem;
+        padding-right: 2.5rem;
+      }
+      
+      button[type="submit"] {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+      }
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* High Contrast Mode */
+    @media (prefers-contrast: high) {
+      :root {
+        --border-color: #000000;
+        --text-secondary: #000000;
+      }
+    }
+
+    /* Focus Styles for Accessibility */
+    button[type="submit"]:focus,
+    select:focus,
+    .nav-links a:focus,
+    .btn-logout a:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+
+    /* Loading State */
+    .loading {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    /* Animation for form validation */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    .error {
+      animation: shake 0.5s ease-in-out;
+      border-color: var(--danger-color) !important;
+    }

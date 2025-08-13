@@ -1,0 +1,604 @@
+/* CSS Variables */
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary-color: #10b981;
+  --accent-color: #f59e0b;
+  --success-color: #059669;
+  --danger-color: #dc2626;
+  --warning-color: #d97706;
+  
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-sidebar: #1f2937;
+  --bg-sidebar-hover: #374151;
+  
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-white: #ffffff;
+  --text-sidebar: #d1d5db;
+  --text-sidebar-active: #ffffff;
+  
+  --border-color: #e5e7eb;
+  --border-hover: #d1d5db;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s ease-in-out;
+  
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 0px;
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  background: var(--bg-sidebar);
+  color: var(--text-white);
+  border: none;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+  display: none;
+}
+
+.sidebar-toggle:hover {
+  background: var(--bg-sidebar-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Container */
+.container-pimpinan {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-sidebar);
+  color: var(--text-sidebar);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  padding: 2rem 0;
+  transition: var(--transition);
+  z-index: 1000;
+  box-shadow: var(--shadow-xl);
+  overflow-y: auto;
+}
+
+.sidebar .logo {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 0 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-white);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin: 0.25rem 0;
+}
+
+.sidebar-menu a {
+  display: block;
+  color: var(--text-sidebar);
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  transition: var(--transition-fast);
+  font-weight: 500;
+  position: relative;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-menu a:hover {
+  background: var(--bg-sidebar-hover);
+  color: var(--text-sidebar-active);
+  border-left-color: var(--primary-color);
+  padding-left: 2rem;
+}
+
+.sidebar-menu a.active {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(16, 185, 129, 0.1));
+  color: var(--text-sidebar-active);
+  border-left-color: var(--primary-color);
+  font-weight: 600;
+}
+
+.sidebar-menu a.active::before {
+  content: '';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--primary-color);
+  border-radius: 50%;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding: 2rem;
+  background: var(--bg-secondary);
+  min-height: 100vh;
+  transition: var(--transition);
+}
+
+.main-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--text-primary), var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Table Container */
+.table-box {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.table-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.table-box:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Table Styles */
+.table-box table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.table-box table thead {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: var(--text-white);
+}
+
+.table-box table thead th {
+  padding: 1rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.75rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.table-box table tbody tr {
+  transition: var(--transition-fast);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table-box table tbody tr:hover {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.02), rgba(16, 185, 129, 0.02));
+  transform: translateX(4px);
+}
+
+.table-box table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table-box table tbody td {
+  padding: 1rem 0.75rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.table-box table tbody td:first-child {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Image Styling */
+.table-box table img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.table-box table img:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+/* Price Styling */
+.table-box table tbody td:last-child {
+  font-weight: 600;
+  color: var(--success-color);
+  font-size: 0.9rem;
+}
+
+/* Stock Column Styling */
+.table-box table tbody td:nth-child(5) {
+  font-weight: 600;
+}
+
+.table-box table tbody tr td:nth-child(5) {
+  position: relative;
+}
+
+/* Add stock status indicators */
+.table-box table tbody tr td:nth-child(5)::after {
+  content: '';
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success-color);
+}
+
+/* Category Column Styling */
+.table-box table tbody td:nth-child(4) {
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 1.5rem;
+  }
+  
+  .main-content h1 {
+    font-size: 2rem;
+  }
+  
+  .table-box {
+    padding: 1.5rem;
+  }
+  
+  .table-box table {
+    font-size: 0.8rem;
+  }
+  
+  .table-box table thead th {
+    padding: 0.875rem 0.5rem;
+    font-size: 0.7rem;
+  }
+  
+  .table-box table tbody td {
+    padding: 0.875rem 0.5rem;
+  }
+  
+  .table-box table img {
+    width: 60px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+  }
+  
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+    padding-top: 4rem;
+  }
+  
+  .main-content h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .table-box {
+    padding: 1rem;
+    overflow-x: auto;
+  }
+  
+  .table-box table {
+    min-width: 600px;
+    font-size: 0.75rem;
+  }
+  
+  .table-box table thead th {
+    padding: 0.75rem 0.375rem;
+    font-size: 0.65rem;
+  }
+  
+  .table-box table tbody td {
+    padding: 0.75rem 0.375rem;
+  }
+  
+  .table-box table img {
+    width: 50px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+  }
+  
+  .main-content {
+    padding: 0.75rem;
+    padding-top: 3.5rem;
+  }
+  
+  .main-content h1 {
+    font-size: 1.5rem;
+  }
+  
+  .table-box {
+    padding: 0.75rem;
+  }
+  
+  .table-box table {
+    min-width: 500px;
+    font-size: 0.7rem;
+  }
+  
+  .table-box table thead th {
+    padding: 0.625rem 0.25rem;
+    font-size: 0.6rem;
+  }
+  
+  .table-box table tbody td {
+    padding: 0.625rem 0.25rem;
+  }
+  
+  .table-box table img {
+    width: 40px;
+    height: 30px;
+  }
+}
+
+/* Sidebar Overlay for Mobile */
+@media (max-width: 768px) {
+  .sidebar.active::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: var(--sidebar-width);
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Row Animation */
+.table-box table tbody tr {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.table-box table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.table-box table tbody tr:nth-child(2) { animation-delay: 0.15s; }
+.table-box table tbody tr:nth-child(3) { animation-delay: 0.2s; }
+.table-box table tbody tr:nth-child(4) { animation-delay: 0.25s; }
+.table-box table tbody tr:nth-child(5) { animation-delay: 0.3s; }
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --border-color: #000000;
+    --text-secondary: #000000;
+  }
+}
+
+/* Focus Styles for Accessibility */
+.sidebar-menu a:focus,
+.sidebar-toggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.table-box table tbody tr:focus-within {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Custom Scrollbar */
+.sidebar::-webkit-scrollbar,
+.table-box::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.table-box::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.table-box::-webkit-scrollbar-thumb {
+  background: var(--bg-sidebar-hover);
+  border-radius: var(--radius-sm);
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.table-box::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.table-box::-webkit-scrollbar-track {
+  background: var(--bg-card);
+}
+
+/* Print Styles */
+@media print {
+  .sidebar,
+  .sidebar-toggle {
+    display: none;
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .table-box {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  
+  .table-box::before {
+    display: none;
+  }
+  
+  .table-box table thead {
+    background: #000 !important;
+    color: #fff !important;
+  }
+  
+  .table-box table tbody tr:hover {
+    background: none !important;
+    transform: none !important;
+  }
+  
+  .table-box table img {
+    filter: grayscale(100%);
+  }
+}
+
+/* Loading Animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Empty State Styling */
+.table-box table tbody tr td[colspan] {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Add Mobile Toggle JavaScript Support */
+.sidebar-toggle {
+  transition: var(--transition);
+}
+
+.sidebar-toggle.active {
+  background: var(--primary-color);
+}
+
+/* Enhance table hover effects */
+.table-box table tbody tr:hover td:first-child {
+  color: var(--primary-hover);
+  font-weight: 700;
+}
+
+.table-box table tbody tr:hover img {
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+}

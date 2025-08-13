@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5fdf4;
+    color: #2d3e2f;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content-wrapper {
+    flex: 1;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3e6646;
+    padding: 1rem 2rem;
+    color: white;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #c8f7c5;
+  }
+  
+  .btn-logout a {
+    background-color: #7bc96f;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-logout a:hover {
+    background-color: #65a858;
+  }
+  
+  .dashboard {
+    padding: 2rem;
+  }
+  
+  .welcome-box {
+    background-color: #e8fbe5;
+    border-left: 5px solid #7bc96f;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+  
+  .welcome-box h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .features {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background-color: white;
+    border: 1px solid #d4e9d2;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    flex: 1;
+    min-width: 250px;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card h3 {
+    color: #3e6646;
+    margin-bottom: 0.5rem;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #3e6646;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      width: 100%;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+  
+    .btn-logout {
+      margin-top: 1rem;
+      align-self: flex-end;
+    }
+  
+    .features {
+      flex-direction: column;
+    }
+  
+    .dashboard {
+      padding: 1rem;
+    }
+  
+    .welcome-box h1 {
+      font-size: 1.5rem;
+    }
+  
+    .card {
+      min-width: 100%;
+    }
+  }
+
+  .order-detail {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-detail h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+  }
+  
+  .order-detail p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+  
+  
+  
